@@ -1,5 +1,8 @@
 # Polpot Sort
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Language: Python](https://img.shields.io/badge/Language-Python-blue.svg)](https://www.python.org/)
+
 [日本語版READMEはこちら](https://github.com/heru0729/polpot-sort/blob/main/README-ja.md)
 
 Polpot Sort is a satirical, destructive sorting algorithm derived from
@@ -7,6 +10,8 @@ Polpot Sort is a satirical, destructive sorting algorithm derived from
 guarantee a sorted output. It does not guarantee the output length. It only
 guarantees that every surviving element is less than or equal to a randomly
 chosen baseline value.
+
+![Polpot Sort demo](assets/demo.gif)
 
 ## Algorithm
 
@@ -28,6 +33,8 @@ that is the point.
 | `polpot_sort.py` | The algorithm, as a `PolpotSort` class with a CLI demo |
 | `make_video.py` | Renders the elimination process as an mp4 (bar chart) |
 | `requirements.txt` | Dependencies for `make_video.py` |
+| `assets/demo.gif` | Sample output shown above |
+| `LICENSE` | MIT License |
 
 ## Installation
 
@@ -98,4 +105,4 @@ automatically with input size so larger inputs play back faster.
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
