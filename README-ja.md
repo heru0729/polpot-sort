@@ -26,10 +26,12 @@
 
 | ファイル | 用途 |
 |---|---|
-| `polpot_sort.py` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ / Python) |
+| `python/polpot_sort.py` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ / Python) |
+| `python/make_video.py` | 粛清の過程を棒グラフ動画(mp4)として書き出す |
+| `python/requirements.txt` | `make_video.py` に必要な依存パッケージ |
 | `javascript/polpot_sort.js` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ / Node.js) |
-| `make_video.py` | 粛清の過程を棒グラフ動画(mp4)として書き出す |
-| `requirements.txt` | `make_video.py` に必要な依存パッケージ |
+| `javascript/make_video.js` | 粛清の過程をmp4動画として書き出す(Node.js、npm依存なし、システムに`ffmpeg`が必要) |
+| `javascript/package.json` | Node.js版のパッケージ情報 |
 | `assets/demo.gif` | 上に表示しているサンプル出力 |
 | `LICENSE` | MITライセンス |
 
@@ -40,10 +42,11 @@ git clone https://github.com/<your-username>/polpot-sort.git
 cd polpot-sort
 ```
 
-`polpot_sort.py` はサードパーティ依存なしで動作します。`make_video.py` を使う場合は
-`requirements.txt` の依存パッケージに加え、システムに `ffmpeg` が必要です。
+`python/polpot_sort.py` はサードパーティ依存なしで動作します。`python/make_video.py`
+を使う場合は `python/requirements.txt` の依存パッケージに加え、システムに `ffmpeg` が必要です。
 
 ```bash
+cd python
 pip install -r requirements.txt
 ```
 
@@ -52,7 +55,7 @@ pip install -r requirements.txt
 ### ライブラリとして使う
 
 ```python
-from polpot_sort import PolpotSort
+from python.polpot_sort import PolpotSort
 
 data = [5, 3, 8, 1, 9, 2, 7, 4, 6, 10]
 sorter = PolpotSort(purge_probability=0.2, seed=42)
@@ -63,6 +66,7 @@ print(result)
 ### コマンドラインから使う
 
 ```bash
+cd python
 python polpot_sort.py --size 20 --low 1 --high 100 --seed 42
 ```
 
@@ -96,10 +100,11 @@ CLIオプションはPython版と同じ(`--size`, `--low`, `--high`,
 ### 可視化動画を生成する
 
 ```bash
+cd python
 python make_video.py
 ```
 
-カレントディレクトリに `polpot_sort_pillow.mp4` が生成されます。色の意味は以下の通りです。
+`python/` ディレクトリに `polpot_sort_pillow.mp4` が生成されます。色の意味は以下の通りです。
 
 | 色 | 意味 |
 |---|---|
@@ -109,6 +114,14 @@ python make_video.py
 
 粛清された要素はその場で即座に消えます。動画の長さは入力サイズに応じて自動調整され、
 要素数が多いほど再生速度が速くなります。
+
+Node.js版も用意しており、npm依存なしで同等の動画を生成できます(生のピクセルデータを
+システムの`ffmpeg`プロセスへ直接パイプする方式)。
+
+```bash
+cd javascript
+node make_video.js
+```
 
 ## 関連するジョークアルゴリズム
 
