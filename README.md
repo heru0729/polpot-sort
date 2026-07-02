@@ -13,6 +13,24 @@ chosen baseline value.
 
 ![Polpot Sort demo](assets/demo.gif)
 
+## Quick Start
+
+Just want to see the video without troubleshooting Python/Node.js
+environment issues? Run the launcher script for your platform — it
+finds a working interpreter, sets up an isolated environment, and
+generates the video in one step.
+
+```bash
+cd python && ./run.sh      # macOS / Linux
+```
+```powershell
+cd python; .\run.bat       # Windows
+```
+
+(The `javascript/` folder has the same `run.sh` / `run.bat` pair if you
+prefer the Node.js version — it requires system `ffmpeg` but no npm
+packages.)
+
 ## Algorithm
 
 1. Pick one element from the input array at random. Fix it as the
@@ -33,9 +51,11 @@ that is the point.
 | `python/polpot_sort.py` | The algorithm, as a `PolpotSort` class with a CLI demo (Python) |
 | `python/make_video.py` | Renders the elimination process as an mp4 (bar chart) |
 | `python/requirements.txt` | Dependencies for `make_video.py` |
+| `python/run.sh` / `run.bat` | One-step launcher: creates a venv, installs deps, runs `make_video.py` |
 | `javascript/polpot_sort.js` | The algorithm, as a `PolpotSort` class with a CLI demo (Node.js) |
 | `javascript/make_video.js` | Renders the elimination process as an mp4 (Node.js, no npm dependencies, requires system `ffmpeg`) |
 | `javascript/package.json` | Package metadata for the Node.js version |
+| `javascript/run.sh` / `run.bat` | One-step launcher: checks for Node.js/ffmpeg, runs `make_video.js` |
 | `assets/demo.gif` | Sample output shown above |
 | `LICENSE` | MIT License |
 
@@ -54,6 +74,9 @@ of `ffmpeg`.
 cd python
 pip install -r requirements.txt
 ```
+
+(Or just run `./run.sh` / `run.bat`, which does this in an isolated
+virtual environment automatically — see Quick Start above.)
 
 ## Usage
 
