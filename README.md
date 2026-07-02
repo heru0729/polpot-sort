@@ -30,7 +30,8 @@ that is the point.
 
 | File | Purpose |
 |---|---|
-| `polpot_sort.py` | The algorithm, as a `PolpotSort` class with a CLI demo |
+| `polpot_sort.py` | The algorithm, as a `PolpotSort` class with a CLI demo (Python) |
+| `javascript/polpot_sort.js` | The algorithm, as a `PolpotSort` class with a CLI demo (Node.js) |
 | `make_video.py` | Renders the elimination process as an mp4 (bar chart) |
 | `requirements.txt` | Dependencies for `make_video.py` |
 | `assets/demo.gif` | Sample output shown above |
@@ -77,6 +78,25 @@ python polpot_sort.py --size 20 --low 1 --high 100 --seed 42
 | `--high` | Upper bound of generated values | `100` |
 | `--purge-probability` | Phase-2 purge probability | `0.2` |
 | `--seed` | Random seed for reproducibility | `None` |
+
+### JavaScript (Node.js)
+
+```bash
+cd javascript
+node polpot_sort.js --size 20 --low 1 --high 100 --seed 42
+```
+
+```javascript
+const { PolpotSort } = require('./javascript/polpot_sort.js');
+
+const data = [5, 3, 8, 1, 9, 2, 7, 4, 6, 10];
+const sorter = new PolpotSort({ purgeProbability: 0.2, seed: 42 });
+const result = sorter.sort(data);
+console.log(result);
+```
+
+Same CLI flags as the Python version: `--size`, `--low`, `--high`,
+`--purge-probability`, `--seed`. No dependencies required.
 
 ### Generating a visualization
 
