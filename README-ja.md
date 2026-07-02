@@ -12,6 +12,22 @@
 
 ![Polpot Sort demo](assets/demo.gif)
 
+## クイックスタート
+
+Python/Node.jsの環境トラブルに悩まず、とにかく動画をすぐ見たい場合は、
+OSに合わせたランチャースクリプトを実行してください。動作するインタプリタを
+自動検出し、隔離された環境をセットアップした上で、動画を一発生成します。
+
+```bash
+cd python && ./run.sh      # macOS / Linux
+```
+```powershell
+cd python; .\run.bat       # Windows
+```
+
+(`javascript/` フォルダにも同じ `run.sh` / `run.bat` があり、Node.js版を
+使う場合はそちらを使えます。npmパッケージは不要ですが、システムに`ffmpeg`が必要です。)
+
 ## アルゴリズム
 
 1. 入力配列からランダムに1要素を選び、それを**基準値**として固定する(実行中は一切更新しない)。
@@ -29,9 +45,11 @@
 | `python/polpot_sort.py` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ / Python) |
 | `python/make_video.py` | 粛清の過程を棒グラフ動画(mp4)として書き出す |
 | `python/requirements.txt` | `make_video.py` に必要な依存パッケージ |
+| `python/run.sh` / `run.bat` | ワンステップ起動: venv作成 → 依存インストール → `make_video.py` 実行 |
 | `javascript/polpot_sort.js` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ / Node.js) |
 | `javascript/make_video.js` | 粛清の過程をmp4動画として書き出す(Node.js、npm依存なし、システムに`ffmpeg`が必要) |
 | `javascript/package.json` | Node.js版のパッケージ情報 |
+| `javascript/run.sh` / `run.bat` | ワンステップ起動: Node.js/ffmpeg確認 → `make_video.js` 実行 |
 | `assets/demo.gif` | 上に表示しているサンプル出力 |
 | `LICENSE` | MITライセンス |
 
@@ -49,6 +67,9 @@ cd polpot-sort
 cd python
 pip install -r requirements.txt
 ```
+
+(または `./run.sh` / `run.bat` を実行すれば、隔離された仮想環境の中で
+自動的にこれを行います。上記のクイックスタートを参照してください。)
 
 ## 使い方
 
