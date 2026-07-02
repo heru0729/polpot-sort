@@ -26,7 +26,8 @@
 
 | ファイル | 用途 |
 |---|---|
-| `polpot_sort.py` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ) |
+| `polpot_sort.py` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ / Python) |
+| `javascript/polpot_sort.js` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ / Node.js) |
 | `make_video.py` | 粛清の過程を棒グラフ動画(mp4)として書き出す |
 | `requirements.txt` | `make_video.py` に必要な依存パッケージ |
 | `assets/demo.gif` | 上に表示しているサンプル出力 |
@@ -72,6 +73,25 @@ python polpot_sort.py --size 20 --low 1 --high 100 --seed 42
 | `--high` | 生成する値の上限 | `100` |
 | `--purge-probability` | フェーズ2での粛清確率 | `0.2` |
 | `--seed` | 再現性のための乱数シード | `None` |
+
+### JavaScript (Node.js) から使う
+
+```bash
+cd javascript
+node polpot_sort.js --size 20 --low 1 --high 100 --seed 42
+```
+
+```javascript
+const { PolpotSort } = require('./javascript/polpot_sort.js');
+
+const data = [5, 3, 8, 1, 9, 2, 7, 4, 6, 10];
+const sorter = new PolpotSort({ purgeProbability: 0.2, seed: 42 });
+const result = sorter.sort(data);
+console.log(result);
+```
+
+CLIオプションはPython版と同じ(`--size`, `--low`, `--high`,
+`--purge-probability`, `--seed`)。依存パッケージなしで動作する。
 
 ### 可視化動画を生成する
 
