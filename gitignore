@@ -1,0 +1,5 @@
+python/.venv/
+python/__pycache__/
+python/*.mp4
+javascript/node_modules/
+javascript/*.mp4
