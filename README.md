@@ -1,5 +1,7 @@
 # Polpot Sort
 
+[日本語版READMEはこちら](https://github.com/heru0729/polpot-sort/blob/main/README-ja.md)
+
 Polpot Sort is a satirical, destructive sorting algorithm derived from
 [Stalin Sort](https://github.com/gustavo-depaula/stalin-sort). It does not
 guarantee a sorted output. It does not guarantee the output length. It only
