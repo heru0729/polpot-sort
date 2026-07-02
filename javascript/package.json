@@ -1,0 +1,13 @@
+{
+  "name": "polpot-sort",
+  "version": "1.0.0",
+  "description": "A satirical, destructive sorting algorithm derived from Stalin Sort.",
+  "main": "polpot_sort.js",
+  "scripts": {
+    "demo": "node polpot_sort.js"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  }
+}
