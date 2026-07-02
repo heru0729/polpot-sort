@@ -1,9 +1,16 @@
 # Polpot Sort (ポルポトソート)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Language: Python](https://img.shields.io/badge/Language-Python-blue.svg)](https://www.python.org/)
+
+[English README is here](https://github.com/heru0729/polpot-sort/blob/main/README.md)
+
 ポルポトソートは、[スターリンソート](https://github.com/gustavo-depaula/stalin-sort)
 から派生した、破壊的なジョークソートアルゴリズムです。ソート済みの出力を保証しません。
 出力の要素数も保証しません。保証されるのは「生き残った要素はすべて、ランダムに選ばれた
 基準値以下である」ということだけです。
+
+![Polpot Sort demo](assets/demo.gif)
 
 ## アルゴリズム
 
@@ -22,6 +29,8 @@
 | `polpot_sort.py` | アルゴリズム本体(`PolpotSort` クラス + CLIデモ) |
 | `make_video.py` | 粛清の過程を棒グラフ動画(mp4)として書き出す |
 | `requirements.txt` | `make_video.py` に必要な依存パッケージ |
+| `assets/demo.gif` | 上に表示しているサンプル出力 |
+| `LICENSE` | MITライセンス |
 
 ## インストール
 
@@ -90,4 +99,4 @@ python make_video.py
 
 ## ライセンス
 
-MIT
+MIT — [LICENSE](LICENSE) を参照。
