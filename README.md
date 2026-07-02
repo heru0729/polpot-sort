@@ -30,10 +30,12 @@ that is the point.
 
 | File | Purpose |
 |---|---|
-| `polpot_sort.py` | The algorithm, as a `PolpotSort` class with a CLI demo (Python) |
+| `python/polpot_sort.py` | The algorithm, as a `PolpotSort` class with a CLI demo (Python) |
+| `python/make_video.py` | Renders the elimination process as an mp4 (bar chart) |
+| `python/requirements.txt` | Dependencies for `make_video.py` |
 | `javascript/polpot_sort.js` | The algorithm, as a `PolpotSort` class with a CLI demo (Node.js) |
-| `make_video.py` | Renders the elimination process as an mp4 (bar chart) |
-| `requirements.txt` | Dependencies for `make_video.py` |
+| `javascript/make_video.js` | Renders the elimination process as an mp4 (Node.js, no npm dependencies, requires system `ffmpeg`) |
+| `javascript/package.json` | Package metadata for the Node.js version |
 | `assets/demo.gif` | Sample output shown above |
 | `LICENSE` | MIT License |
 
@@ -44,11 +46,12 @@ git clone https://github.com/<your-username>/polpot-sort.git
 cd polpot-sort
 ```
 
-`polpot_sort.py` has no third-party dependencies. `make_video.py`
-requires the packages in `requirements.txt` plus a system installation
+`python/polpot_sort.py` has no third-party dependencies. `python/make_video.py`
+requires the packages in `python/requirements.txt` plus a system installation
 of `ffmpeg`.
 
 ```bash
+cd python
 pip install -r requirements.txt
 ```
 
@@ -57,7 +60,7 @@ pip install -r requirements.txt
 ### As a library
 
 ```python
-from polpot_sort import PolpotSort
+from python.polpot_sort import PolpotSort
 
 data = [5, 3, 8, 1, 9, 2, 7, 4, 6, 10]
 sorter = PolpotSort(purge_probability=0.2, seed=42)
@@ -68,6 +71,7 @@ print(result)
 ### From the command line
 
 ```bash
+cd python
 python polpot_sort.py --size 20 --low 1 --high 100 --seed 42
 ```
 
@@ -101,10 +105,11 @@ Same CLI flags as the Python version: `--size`, `--low`, `--high`,
 ### Generating a visualization
 
 ```bash
+cd python
 python make_video.py
 ```
 
-Produces `polpot_sort_pillow.mp4` in the current directory. Bar color
+Produces `polpot_sort_pillow.mp4` in the `python/` directory. Bar color
 legend:
 
 | Color | Meaning |
@@ -115,6 +120,15 @@ legend:
 
 Eliminated elements disappear immediately. Video length scales
 automatically with input size so larger inputs play back faster.
+
+A Node.js version is also available and produces an equivalent video
+with zero npm dependencies (it pipes raw pixels directly into a system
+`ffmpeg` process):
+
+```bash
+cd javascript
+node make_video.js
+```
 
 ## Related jokes
 
