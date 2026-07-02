@@ -39,10 +39,12 @@ class PolpotSort(object):
     purge_probability : float
       Probability that a phase-1 survivor is removed in phase 2.
     seed : int or None
-      Random seed for reproducible runs.
+      Random seed for reproducible runs. Uses a dedicated random.Random
+      instance so this does not affect the global `random` module state.
     """
     self.purge_probability = purge_probability
     self.seed = seed
+    self._rng = random.Random(seed)
 
   def sort(self, arr):
     """
@@ -52,18 +54,15 @@ class PolpotSort(object):
       A list containing the surviving elements. Guaranteed non-empty
       if the input is non-empty.
     """
-    if self.seed is not None:
-      random.seed(self.seed)
-
     if not arr:
       return []
 
     n = len(arr)
-    baseline_idx = random.randrange(n)
+    baseline_idx = self._rng.randrange(n)
     baseline_val = arr[baseline_idx]
 
     survivors = [x for x in arr if x <= baseline_val]
-    purged = [x for x in survivors if random.random() > self.purge_probability]
+    purged = [x for x in survivors if self._rng.random() > self.purge_probability]
 
     return purged if purged else [baseline_val]
 
