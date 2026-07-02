@@ -16,13 +16,13 @@ BAR_GAP_RATIO = 0.15
 
 
 def build_frames(data, seed=42):
-    random.seed(seed)
+    rng = random.Random(seed)
     n = len(data)
     display = list(data)
     colors = [COLOR_PENDING] * n
     frames = [(display.copy(), colors.copy())]
 
-    baseline_idx = random.randrange(n)
+    baseline_idx = rng.randrange(n)
     baseline_val = data[baseline_idx]
     survivors_idx = [baseline_idx]
     colors[baseline_idx] = COLOR_BASELINE
@@ -40,7 +40,7 @@ def build_frames(data, seed=42):
         frames.append((display.copy(), colors.copy()))
 
     for idx in survivors_idx:
-        if random.random() <= 0.2:
+        if rng.random() <= 0.2:
             display[idx] = 0
         frames.append((display.copy(), colors.copy()))
 
@@ -95,6 +95,6 @@ def make_video(data, output_path, seed=42, target_duration=6.0,
 
 
 if __name__ == "__main__":
-    random.seed(1)
-    data = random.sample(range(1, 5000), 300)
+    data_rng = random.Random(1)
+    data = data_rng.sample(range(1, 5000), 300)
     make_video(data, output_path="polpot_sort_pillow.mp4", seed=42, target_duration=6.0)
